@@ -1,9 +1,14 @@
 import "./App.css";
+import Header from "./components/Header.jsx";
+import Navbar from "./components/Navbar.jsx";
+import StudentCard from "./components/StudentCard.jsx";
+import Footer from "./components/Footer.jsx";
 import Image from "./assets/Image.jpeg";
 
-function App() {
-  const student = {
-    nomPrenom: "Maryem Rhouma",
+const etudiants = [
+  {
+    prenom: "Maryem",
+    nom: "Rhouma",
     email: "rhmmariem@gmail.com",
     telephone: "+216 40 133 061",
     filiere: "Génie Logiciel et Systèmes d'Information",
@@ -11,26 +16,34 @@ function App() {
     groupe: "GLSI 2D",
     ville: "Mahdia",
     image: Image,
-  };
+  },
+];
 
-  const handleContact = () => {
-    window.location.href = `mailto:${student.email}?subject=Contact&body=Bonjour ${student.nomPrenom},`;
-  };
-
+function App() {
   return (
-    <div className="card">
-      <img src={student.image} alt="profile" className="avatar" />
-      <h1>Fiche étudiant</h1>
-      <p><strong>Nom & Prénom :</strong> {student.nomPrenom}</p>
-      <p><strong>Email :</strong> {student.email}</p>
-      <p><strong>Téléphone :</strong> {student.telephone}</p>
-      <p><strong>Filière :</strong> {student.filiere}</p>
-      <p><strong>Année d'étude :</strong> {student.anneeEtude}</p>
-      <p><strong>Groupe :</strong> {student.groupe}</p>
-      <p><strong>Ville :</strong> {student.ville}</p>
-      <button className="btn" onClick={handleContact}>Contacter</button>
+    <div className="app">
+      <Header />
+      <Navbar />
+      <main className="container">
+        {etudiants.map((etudiant) => (
+          <StudentCard
+            key={etudiant.email}
+            prenom={etudiant.prenom}
+            nom={etudiant.nom}
+            email={etudiant.email}
+            telephone={etudiant.telephone}
+            filiere={etudiant.filiere}
+            anneeEtude={etudiant.anneeEtude}
+            groupe={etudiant.groupe}
+            ville={etudiant.ville}
+            image={etudiant.image}
+          />
+        ))}
+      </main>
+      <Footer />
     </div>
   );
 }
 
 export default App;
+
