@@ -31,3 +31,36 @@ body {
   gap: 24px;
   padding: 30px 20px;
 }
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 20px 20px 0;
+}
+
+.toolbar .btn {
+  margin-top: 0;
+}
+
+.toolbar input,
+.form-ajout input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form-ajout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 20px 0;
+}
+
+.form-ajout .btn {
+  margin-top: 0;
+}
