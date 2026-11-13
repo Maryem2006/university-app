@@ -13,7 +13,7 @@ function StudentCard(props) {
   }
 
   function handleContact() {
-    window.location.href = `mailto:${props.email}?subject=Contact`;
+    window.location.href = `mailto:${props.id}?subject=Contact`;
   }
 
   function handleModifier() {
@@ -49,9 +49,9 @@ function StudentCard(props) {
         <>
           <p><strong>Email :</strong> {props.email}</p>
           <p><strong>Téléphone :</strong> {props.telephone}</p>
+          <p><strong>id :</strong> {props.id}</p>
         </>
       )}
-
       <p><strong>Filière :</strong> {props.filiere}</p>
       <p><strong>Année d'étude :</strong> {props.anneeEtude}</p>
       <p><strong>Groupe :</strong> {props.groupe}</p>

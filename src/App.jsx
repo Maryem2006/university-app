@@ -7,6 +7,7 @@ import Footer from "./components/Footer.jsx";
 import Image from "./assets/Image.jpeg";
 import Image2 from "./assets/image2.jpeg";
 import Image3 from "./assets/image3.jpeg";
+import StudentForm from "./components/StudentForm.jsx";
 
 function App() {
   const [etudiants, setEtudiants] = useState([
@@ -92,6 +93,7 @@ function App() {
     <div className="app">
       <Header />
       <Navbar />
+      <StudentForm/>
 
       <div className="toolbar">
         <button
