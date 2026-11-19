@@ -1,11 +1,12 @@
 .footer {
-  background: #2d3a8c;
+  background: #1f2a6b;
   color: white;
   text-align: center;
-  padding: 14px;
+  padding: 18px;
 }
 
 .footer p {
   margin: 0;
   font-size: 14px;
+  opacity: 0.85;
 }

@@ -1,17 +1,26 @@
 .navbar {
-  background: #5b5bd6;
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 12px;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(45, 58, 140, 0.12);
 }
 
 .navbar a {
-  color: white;
+  color: #2d3a8c;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
 }
 
 .navbar a:hover {
-  text-decoration: underline;
+  background: #5b5bd6;
+  color: white;
 }

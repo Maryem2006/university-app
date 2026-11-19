@@ -3,15 +3,16 @@ import "./App.css";
 import Header from "./components/Header.jsx";
 import Navbar from "./components/Navbar.jsx";
 import StudentCard from "./components/StudentCard.jsx";
+import StudentForm from "./components/StudentForm.jsx";
 import Footer from "./components/Footer.jsx";
 import Image from "./assets/Image.jpeg";
 import Image2 from "./assets/image2.jpeg";
 import Image3 from "./assets/image3.jpeg";
-import StudentForm from "./components/StudentForm.jsx";
 
 function App() {
   const [etudiants, setEtudiants] = useState([
     {
+      id: 1,
       prenom: "Maryem",
       nom: "Rhouma",
       email: "rhmmariem@gmail.com",
@@ -23,6 +24,7 @@ function App() {
       image: Image,
     },
     {
+      id: 2,
       prenom: "Zeineb",
       nom: "Ben cheikh",
       email: "zeinebbencheikh98@gmail.com",
@@ -34,6 +36,7 @@ function App() {
       image: Image2,
     },
     {
+      id: 3,
       prenom: "Tesnime",
       nom: "ounissi",
       email: "ounissi.tesnime2@gmail.com",
@@ -47,40 +50,20 @@ function App() {
   ]);
 
   const [filtre, setFiltre] = useState("");
-  const [formulaireVisible, setFormulaireVisible] = useState(false);
-  const [nouveau, setNouveau] = useState({ prenom: "", nom: "", filiere: "" });
 
-  function handleChange(e) {
-    setNouveau({ ...nouveau, [e.target.name]: e.target.value });
+  function ajouterEtudiant(nouvelEtudiant) {
+    const etudiantAvecId = { ...nouvelEtudiant, id: Date.now() };
+    setEtudiants([...etudiants, etudiantAvecId]);
   }
 
-  function ajouterEtudiant(e) {
-    e.preventDefault();
-    if (!nouveau.prenom.trim()) return;
-
-    const nouvelEtudiant = {
-      prenom: nouveau.prenom,
-      nom: nouveau.nom,
-      email: `${nouveau.prenom.toLowerCase()}.${Date.now()}@gmail.com`,
-      telephone: "+216 00 000 000",
-      filiere: nouveau.filiere || "Non renseignée",
-      anneeEtude: "2ème année",
-      groupe: "GLSI 2",
-    };
-
-    setEtudiants([...etudiants, nouvelEtudiant]);
-    setNouveau({ prenom: "", nom: "", filiere: "" });
-    setFormulaireVisible(false);
+  function supprimerEtudiant(id) {
+    setEtudiants(etudiants.filter((e) => e.id !== id));
   }
 
-  function supprimerEtudiant(email) {
-    setEtudiants(etudiants.filter((e) => e.email !== email));
-  }
-
-  function modifierPrenom(email, nouveauPrenom) {
+  function modifierPrenom(id, nouveauPrenom) {
     setEtudiants(
       etudiants.map((e) =>
-        e.email === email ? { ...e, prenom: nouveauPrenom } : e
+        e.id === id ? { ...e, prenom: nouveauPrenom } : e
       )
     );
   }
@@ -93,15 +76,10 @@ function App() {
     <div className="app">
       <Header />
       <Navbar />
-      <StudentForm/>
+
+      <StudentForm onAjouterEtudiant={ajouterEtudiant} />
 
       <div className="toolbar">
-        <button
-          className="btn"
-          onClick={() => setFormulaireVisible(!formulaireVisible)}
-        >
-          {formulaireVisible ? "Annuler" : "+ Ajouter un étudiant"}
-        </button>
         <input
           type="text"
           placeholder="Filtrer par filière..."
@@ -110,19 +88,10 @@ function App() {
         />
       </div>
 
-      {formulaireVisible && (
-        <form className="form-ajout" onSubmit={ajouterEtudiant}>
-          <input name="prenom" placeholder="Prénom" value={nouveau.prenom} onChange={handleChange} />
-          <input name="nom" placeholder="Nom" value={nouveau.nom} onChange={handleChange} />
-          <input name="filiere" placeholder="Filière" value={nouveau.filiere} onChange={handleChange} />
-          <button type="submit" className="btn">Ajouter</button>
-        </form>
-      )}
-
       <main className="container">
         {etudiantsFiltres.map((etudiant) => (
           <StudentCard
-            key={etudiant.email}
+            key={etudiant.id}
             prenom={etudiant.prenom}
             nom={etudiant.nom}
             email={etudiant.email}
@@ -132,9 +101,9 @@ function App() {
             groupe={etudiant.groupe}
             ville={etudiant.ville}
             image={etudiant.image}
-            onSupprimer={() => supprimerEtudiant(etudiant.email)}
+            onSupprimer={() => supprimerEtudiant(etudiant.id)}
             onModifier={(nouveauPrenom) =>
-              modifierPrenom(etudiant.email, nouveauPrenom)
+              modifierPrenom(etudiant.id, nouveauPrenom)
             }
           />
         ))}

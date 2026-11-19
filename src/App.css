@@ -1,33 +1,69 @@
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  display: block !important;
+  background: linear-gradient(180deg, #eef0ff 0%, #f8f9ff 100%) fixed !important;
+  color: #2b2d42 !important;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#root {
+  display: block !important;
+  max-width: none !important;
+  padding: 0 !important;
+  text-align: left;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 24px 50px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+  justify-items: center;
+}
+
 .toolbar {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding: 20px 20px 0;
+  padding: 10px 20px 0;
 }
 
-.toolbar .btn {
-  margin-top: 0;
+.toolbar input {
+  width: 340px;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 12px 18px 12px 44px;
+  border: 1px solid #dfe2f3;
+  border-radius: 999px;
+  font-size: 15px;
+  color: #2b2d42;
+  background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%236b7280' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") no-repeat 16px center;
+  box-shadow: 0 4px 14px rgba(45, 58, 140, 0.08);
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
-.toolbar input,
-.form-ajout input {
-  padding: 10px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-}
-
-.form-ajout {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 16px 20px 0;
-}
-
-.form-ajout .btn {
-  margin-top: 0;
+.toolbar input:focus {
+  outline: none;
+  border-color: #5b5bd6;
+  box-shadow: 0 0 0 4px rgba(91, 91, 214, 0.15);
 }
