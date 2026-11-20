@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import Header from "./components/Header.jsx";
+import Header from "./components/header.jsx";
 import Navbar from "./components/Navbar.jsx";
 import StudentCard from "./components/StudentCard.jsx";
 import StudentForm from "./components/StudentForm.jsx";
-import Footer from "./components/Footer.jsx";
+import Footer from "./components/footer.jsx";
 import Image from "./assets/Image.jpeg";
 import Image2 from "./assets/image2.jpeg";
 import Image3 from "./assets/image3.jpeg";
@@ -12,7 +12,7 @@ import Image3 from "./assets/image3.jpeg";
 function App() {
   const [etudiants, setEtudiants] = useState([
     {
-      id: 1,
+      id: "1",
       prenom: "Maryem",
       nom: "Rhouma",
       email: "rhmmariem@gmail.com",
@@ -24,7 +24,7 @@ function App() {
       image: Image,
     },
     {
-      id: 2,
+      id: "2",
       prenom: "Zeineb",
       nom: "Ben cheikh",
       email: "zeinebbencheikh98@gmail.com",
@@ -36,7 +36,7 @@ function App() {
       image: Image2,
     },
     {
-      id: 3,
+      id: "3",
       prenom: "Tesnime",
       nom: "ounissi",
       email: "ounissi.tesnime2@gmail.com",

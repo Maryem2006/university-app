@@ -85,3 +85,24 @@
     padding: 22px;
   }
 }
+.erreur {
+  color: #e5484d;
+  font-size: 12px;
+}
+
+.form-group input.invalide,
+.form-group select.invalide {
+  border-color: #e5484d;
+  background: #fff5f5 !important;
+}
+
+.succes {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #1a7f37;
+  background: #e8f7ee;
+  border-radius: 10px;
+}
